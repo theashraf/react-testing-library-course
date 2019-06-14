@@ -1,15 +1,17 @@
-//🐨 import jest-dom/extend-expect
 import React from 'react'
 import ReactDOM from 'react-dom'
+import 'jest-dom/extend-expect'
 import {FavoriteNumber} from '../favorite-number'
 
 test('renders a number input with a label "Favorite Number"', () => {
   const div = document.createElement('div')
   ReactDOM.render(<FavoriteNumber />, div)
-  // 🐨 change this to use jest-dom's `toHaveAttribute` assertion
-  expect(div.querySelector('input').type).toBe('number')
-  // 🐨 change this to use jest-dom's `toHaveTextContent` assertion
-  expect(div.querySelector('label').textContent).toBe('Favorite Number')
+
+  const inputNode = div.querySelector('input')
+  const labelNode = div.querySelector('label')
+
+  expect(inputNode).toHaveAttribute('type', 'number')
+  expect(labelNode).toHaveTextContent('Favorite Number')
 })
 
 //////// Elaboration & Feedback /////////
@@ -22,7 +24,7 @@ test('renders a number input with a label "Favorite Number"', () => {
 http://ws.kcd.im/?ws=react-testing-library-course&e=jest-dom&em=
 */
 test.skip('I submitted my elaboration and feedback', () => {
-  const submitted = false // change this when you've submitted!
+  const submitted = true // change this when you've submitted!
   expect(submitted).toBe(true)
 })
 ////////////////////////////////
